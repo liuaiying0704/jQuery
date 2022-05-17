@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style></style>
+    <script src="jquery.min.js"></script>
+  </head>
+
+  <body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script>
+      $(function () {
+        // // 隐式迭代：适用于同类元素   同类操作
+        // $('div').css('color', 'red')
+        var arr = ['red', 'green', 'pink'];
+        var sum = 0;
+        // 如果针对于同一类元素做不同操作，需要用到遍历元素
+        // 1. $(element).each(function(index, domEle) {...}) 方法遍历元素
+        $('div').each(function (index, domEle) {
+          console.log(index); //索引
+          console.log(domEle); //dom 元素
+          $(domEle).css('background', arr[index]);
+          //   将div的内容相加
+          sum = sum + +$(domEle).text(); //转化为数字型的
+        });
+        console.log(sum);
+
+        // var arr1 = [9, 8, 7];
+        // $(arr1).each(function (index, domEle) {
+        //   //   console.log(index); //索引
+        //   console.log(domEle); //dom 元素
+        // });
+
+        // // ！！！不能直接遍历数组对象
+        // [1, 2, 3].each(function (index, domEle) {
+        //   console.log(index); //索引
+        //   console.log(domEle); //dom 元素
+        // });
+
+        // {uname:'andy'}.each(function (index, domEle) {
+        //    console.log(index); //索引
+        //    console.log(domEle); //dom 元素
+        //  });
+
+        // 2. $.each() 方法遍历元素 主要用于遍历数据，处理数据(数组，对象)。
+        // $.each(object, function (i, ele) {...});
+        $.each($('div'), function (index, domEle) {
+          console.log(index); //索引号
+          console.log(domEle); //dom 元素
+        });
+        var arr2 = [11, 22, 33];
+        $.each(arr2, function (index, domEle) {
+          console.log(index);
+          console.log(domEle);
+        });
+        $.each({ uname: 'andy', age: 18 }, function (index, domEle) {
+          console.log(index);
+          console.log(domEle);
+        });
+      });
+      // 以上两个的区别：
+      // 1. $(element).each(function(index, domEle) {...}) 方法遍历元素，不可以直接遍历数组，对象。
+      // 2. $.each(object, function (i, ele) {...}); 方法遍历元素 主要用于遍历数据，处理数据(数组，对象)。
+    </script>
+  </body>
+</html>
