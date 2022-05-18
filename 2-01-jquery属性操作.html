@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+  </head>
+  <body>
+    <a href="/login" title="都挺好">都挺好</a>
+    <input type="checkbox" name="" id="" />
+    <div index="1" data-index="12">我是attr方法</div>
+    <span data-index="12">data 方法</span>
+    <script>
+      $(function () {
+        // jquery 属性操作 prop attr data
+        // prop 操作元素的固有属性
+        // 1.取值 prop('属性')
+        console.log($('a').prop('href'));
+        console.log($('a').prop('title'));
+        // 2.设值 prop('属性'， '属性内容')
+        $('a').prop('title', 'weeggghhhhh');
+        $('input').change(function () {
+          $('this').prop('checked'); //⭐️    勾选中复选框，返回true；未勾选，返回false.
+          console.log($(this).prop('checked'));
+        });
+        // attr 操作元素自定义属性  h5 自定义属性
+        // 1.取值 attr('属性')
+        console.log($('div').attr('index'));
+
+        // 2.设值 attr('属性'， '属性内容')
+        $('div').attr('index', 22);
+        // h5 data-
+        $('div').attr('data-index');
+        console.log($('div').attr('data-index')); //   获取自定义属性，并打印12
+        $('div').attr('data-index', 44);
+        console.log($('div').attr('data-index'));
+
+        // data 可在指定元素上存放数据，但是不会改变dom结构(存放在元素的内存里) 刷新页面 缓存进去的数据会清空
+        // 1.取值 data('属性')
+
+        // 2.设值 data('属性'， '属性内容')
+        $('span').data('uname', 'andy');
+        console.log($('span').data('uname'));
+        // h5 自定义属性  不需要加 data- 返回是数字
+        console.log($('div').data('index'));
+      });
+    </script>
+  </body>
+</html>
