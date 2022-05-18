@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+      }
+
+      .current {
+        background-color: purple;
+      }
+    </style>
+    <script src="jquery.min.js"></script>
+  </head>
+
+  <body>
+    <div></div>
+    <ul>
+      <li>我们都是好孩子</li>
+      <li>我们都是好孩子</li>
+      <li>我们都是好孩子</li>
+      <li>我们都是好孩子</li>
+      <li>我们都是好孩子</li>
+    </ul>
+    <ol></ol>
+    <button>点击</button>
+    <script>
+      // var btn = document.querySelector('button');
+      // //
+      // btn.onclick = function () {
+      //   console.log(11);
+      // };
+      // //  addEventListener事件帧听
+      // btn.addEventListener('click', function () {
+      //   console.log(22);
+      // });
+
+      $(function () {
+        // 1. 单个事件注册 element.事件()
+        // 2. 事件处理on
+
+        // // 2.1. 绑定1个或者多个事件处理程序$('div').on({c:f,    m:f})
+        $('div').on({
+          click: function () {
+            $(this).css('background', 'red');
+          },
+          mouseover: function () {
+            $(this).css('background', 'green');
+          },
+        });
+        // // 处理程序相同 事件名直接写在一起  $('div').on({'click mouseover',function(){   }}).
+
+        $('div').on('click mouseover', function () {
+          $(this).css('background', 'red');
+        });
+
+        // 2.2. 事件委托（委派）:可以把原来加在子元素上的事件，加在父元素上
+        // $(element).on('事件名','触发元素', fn)
+        $('ul').on('click', 'li', function () {
+          // console.log(this); //li,事件的触发元素
+        });
+        // 原生
+        // document.querySelector('ul').addEventListener('click', function (e) {
+        //   console.log(this); //ul,,事件绑定的元素
+        //   console.log(e.target); //时间的触发元素
+        // });
+
+        // 事件绑定的对象是谁 ？？？ ul   出事件触发对象是谁 ？？？li
+        // 2.3. on可以给未来动态创建的元素绑定事件
+        $('ul').on({
+          click: function () {
+            console.log(11);
+          },
+        });
+        $('ul').on('click', 'li', function () {
+          console.log(22); //li,事件的触发元素
+        });
+        var li = $('<li>新来的</li>');
+        $('ul').append(li);
+      });
+    </script>
+  </body>
+</html>

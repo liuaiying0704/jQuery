@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script>
+      $(function () {
+        // $.extend([deep], targetObj, obj);
+        var targetObj = {
+          a: 1,
+          msg: {
+            name: 'andy',
+          },
+        };
+        var obj = {
+          a: 2,
+          msg: {
+            age: 18,
+          },
+        };
+        // 1. deep: 默认 false 为浅拷贝， 把原来对象里面的复杂数据类型【地址】拷贝给目标对象,封住缺陷，浅拷贝不传即可，不能写false.
+        $.extend(targetObj, obj); //浅拷贝的语法，obj的栈地址指向的是与targetObj同一个堆。复杂数据栈存的是地址，数据存在堆里。
+        targetObj.msg.age = 26;
+        console.log(targetObj); //{a: 2, msg: {age:26}}
+        console.log(obj); //{a: 2, msg: {age:26}}
+        // // 2. deep: true为深拷贝，把【里面的数据完全复制】一份给目标对象 如果里面有不冲突的属性,会合并到一起
+        $.extend(true, targetObj, obj);
+        targetObj.msg.age = 26;
+        console.log(targetObj); //{a: 2, msg: {age:26}}
+        console.log(obj); //{a: 2, msg: {age:18}}
+      });
+    </script>
+  </head>
+
+  <body></body>
+</html>

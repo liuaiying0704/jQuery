@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+      }
+    </style>
+    <script src="jquery.min.js"></script>
+    <script>
+      // 	jQuery 对DOM中的事件对象 event 进行了封装，兼容性更好，获取更方便，使用变化不大
+      $(function () {
+        $('div').on('click', function (e) {
+          console.log('div');
+          console.log(e);
+          e.stopPropagation(); //阻止冒泡
+        });
+        $('body').on('click', function (e) {
+          console.log('body');
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div></div>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: aqua;
+      }
+    </style>
+    <script src="jquery.min.js"></script>
+    <script>
+      $(function () {
+        function $(ele) {
+          return document.querySelector(ele);
+        }
+        // 问题背景：$被占用，怎么解决，，可以用jQuery代替。
+        // 方法1. 如果$ 符号冲突 我们就使用 jQuery
+        jQuery('div').css('background', 'red');
+
+        // 方法2. 让jquery 释放对$ 控制权 让用自己决定 noConflict
+        var suibian = jQuery.noConflict();
+        suibian('div').css('background', 'red');
+      });
+    </script>
+  </head>
+
+  <body>
+    <div></div>
+    <span></span>
+  </body>
+</html>

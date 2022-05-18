@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+      }
+    </style>
+    <script src="jquery.min.js"></script>
+    <script>
+      $(function () {
+        $('div').on('click', function () {
+          alert(11);
+        });
+
+        $('input').on('focus', function () {
+          $(this).val('shisyishi');
+        });
+
+        // 自动触发事件
+        // 1. element.事件()
+        $('div').click();
+        // 2. element.trigger("事件")
+        $('div').trigger('click');
+        $('input').trigger('focus'); //光标闪动。
+
+        // 3. 元素.triggerHandler("事件") // 不会触发元素的默认行为
+        $('input').triggerHandler('focus'); //光标不闪动，清除默认行为。直接赋值，没有触发focus。
+      });
+    </script>
+  </head>
+
+  <body>
+    <div></div>
+    <input type="text" />
+  </body>
+</html>
